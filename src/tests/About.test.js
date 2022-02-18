@@ -20,10 +20,8 @@ test('Teste se a página contém dois parágrafos com texto sobre a Pokédex.', 
   const { history } = renderWithRouter(<About />);
   history.push('/about');
 
-  const parag1 = screen.getByRole('article',
-    { name: /This application simulates a Pokédex/i });
-  const parag2 = screen.getByRole('article',
-    { name: /One can filter Pokémons by type/i });
+  const parag1 = screen.getByText(/This application simulates a Pokédex/);
+  const parag2 = screen.getByText(/One can filter Pokémons by type/);
 
   expect(parag1).toBeInTheDocument();
   expect(parag2).toBeInTheDocument();
@@ -33,6 +31,6 @@ test('Teste se a página contém a seguinte imagem de uma Pokédex:', () => {
   const { history } = renderWithRouter(<About />);
   history.push('/about');
 
-  const logoEl = screen.getByRole('img', { name: 'Pokédex' });
-  expect(logoEl).toBeInTheDocument();
+  const logoEl = screen.getByRole('img');
+  expect(logoEl).toHaveAttribute('src', 'https://cdn2.bulbagarden.net/upload/thumb/8/86/Gen_I_Pok%C3%A9dex.png/800px-Gen_I_Pok%C3%A9dex.png');
 });
