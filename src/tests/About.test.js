@@ -21,9 +21,9 @@ test('Teste se a página contém dois parágrafos com texto sobre a Pokédex.', 
   history.push('/about');
 
   const parag1 = screen.getByRole('article',
-    { name: 'This application simulates a Pokédex, a digital encyclopedia containing all Pokémons' });
+    { name: /This application simulates a Pokédex/i });
   const parag2 = screen.getByRole('article',
-    { name: 'One can filter Pokémons by type, and see more details for each one of them'});
+    { name: /One can filter Pokémons by type/i });
 
   expect(parag1).toBeInTheDocument();
   expect(parag2).toBeInTheDocument();
