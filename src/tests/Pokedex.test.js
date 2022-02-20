@@ -22,8 +22,8 @@ test(' 2- É exibido o próximo Pokémon da lista quando o botão Próximo poké
   expect(buttonNext).toBeInTheDocument();
   userEvent.click(buttonNext);
 
-  const charmander = screen.getByRole('img');
-  expect(charmander).toHaveAttribute('src', 'https://cdn2.bulbagarden.net/upload/0/0a/Spr_5b_004.png');
+  const charmander = screen.getByRole('img', { name: /Charmander sprite/i });
+  expect(charmander).toBeInTheDocument();
 
   userEvent.click(buttonNext); // caterpie
   userEvent.click(buttonNext); // ekans
@@ -46,14 +46,6 @@ test('O botão deve conter o texto Próximo pokémon.', () => {
   renderWithRouter(<App />);
   const button = screen.getByRole('button', { name: /próximo pokémon/i });
   expect(button).toBeInTheDocument();
-});
-
-test('Os próximos Pokémons da lista devem ser mostrados, um a um.', () => {
-  renderWithRouter(<App />);
-});
-
-test('O primeiro Pokémon da lista deve ser mostrado ao clicar no botão, se estiver no último Pokémon da lista.', () => {
-  renderWithRouter(<App />);
 });
 
 test('3 - Teste se é mostrado apenas um Pokémon por vez.', () => {
@@ -83,8 +75,8 @@ test('a Pokédex deve circular somente pelos pokémons daquele tipo.', () => {
   expect(fire).toBeInTheDocument();
   userEvent.click(fire);
 
-  const charmander = screen.getByRole('img');
-  expect(charmander).toHaveAttribute('src', 'https://cdn2.bulbagarden.net/upload/0/0a/Spr_5b_004.png');
+  const charmander = screen.getByRole('img', { name: /Charmander sprite/i });
+  expect(charmander).toBeInTheDocument();
 
   const buttonNext = screen.getByRole('button', { name: /Próximo Pokémon/i });
   expect(buttonNext).toBeInTheDocument();
@@ -125,8 +117,8 @@ test('A Pokedéx deverá mostrar os Pokémons normalmente, sem filtros.', () => 
   expect(allButton).toBeInTheDocument();
   userEvent.click(allButton);
 
-  const pikachu = screen.getByRole('img');
-  expect(pikachu).toHaveAttribute('src', 'https://cdn2.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png');
+  const pikachu = screen.getByRole('img', { name: /Pikachu sprite/i });
+  expect(pikachu).toBeInTheDocument();
 
   const buttonNext = screen.getByRole('button', { name: /Próximo Pokémon/i });
   expect(buttonNext).toBeInTheDocument();
@@ -139,8 +131,8 @@ test('A Pokedéx deverá mostrar os Pokémons normalmente, sem filtros.', () => 
 test('Ao carregar a página, o filtro selecionado deverá ser All.', () => {
   renderWithRouter(<App />);
 
-  const pikachu = screen.getByRole('img');
-  expect(pikachu).toHaveAttribute('src', 'https://cdn2.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png');
+  const pikachu = screen.getByRole('img', { name: /Pikachu sprite/i });
+  expect(pikachu).toBeInTheDocument();
 
   const buttonNext = screen.getByRole('button', { name: /Próximo Pokémon/i });
   expect(buttonNext).toBeInTheDocument();
