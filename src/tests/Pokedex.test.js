@@ -49,14 +49,12 @@ test('O botão deve conter o texto Próximo pokémon.', () => {
 });
 
 test('Os próximos Pokémons da lista devem ser mostrados, um a um.', () => {
-    renderWithRouter(<App />);
+  renderWithRouter(<App />);
+});
 
-  });
-
-  test('O primeiro Pokémon da lista deve ser mostrado ao clicar no botão, se estiver no último Pokémon da lista.', () => {
-    renderWithRouter(<App />);
-
-  });
+test('O primeiro Pokémon da lista deve ser mostrado ao clicar no botão, se estiver no último Pokémon da lista.', () => {
+  renderWithRouter(<App />);
+});
 
 test('3 - Teste se é mostrado apenas um Pokémon por vez.', () => {
   renderWithRouter(<App />);
@@ -64,9 +62,14 @@ test('3 - Teste se é mostrado apenas um Pokémon por vez.', () => {
   expect(buttonMoreDetails.length).toBe(1);
 });
 
+test('4- Teste se a Pokédex tem os botões de filtro.', () => {
+  renderWithRouter(<App />);
+  const BOTOES_FILTRO = 7;
+  const buttonsFilter = screen.getAllByTestId('pokemon-type-button');
+  expect(buttonsFilter.length).toBe(BOTOES_FILTRO);
+});
 
-
-test('4- Deve existir um botão de filtragem para cada tipo de Pokémon, sem repet', () => {
+test('Deve existir um botão de filtragem para cada tipo de Pokémon, sem repet', () => {
   renderWithRouter(<App />);
 
   const all = screen.getAllByRole('button', { name: /All/i });
@@ -106,9 +109,6 @@ test('O botão All precisa estar sempre visível.', () => {
 
   expect(allButton).toBeVisible();
 });
-
-
-
 
 test('O texto do botão deve ser All.', () => {
   renderWithRouter(<App />);
