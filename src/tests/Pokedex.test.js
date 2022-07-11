@@ -68,23 +68,23 @@ test('Deve existir um botão de filtragem para cada tipo de Pokémon, sem repet'
   expect(all.length).toBe(1);
 });
 
-test('a Pokédex deve circular somente pelos pokémons daquele tipo.', () => {
-  renderWithRouter(<App />);
+// test('a Pokédex deve circular somente pelos pokémons daquele tipo.', () => {
+//   renderWithRouter(<App />);
 
-  const fire = screen.getByRole('button', { name: /fire/i });
-  expect(fire).toBeInTheDocument();
-  userEvent.click(fire);
+//   const fire = screen.getByRole('button', { name: /fire/i });
+//   expect(fire).toBeInTheDocument();
+//   userEvent.click(fire);
 
-  const charmander = screen.getByRole('img', { name: /Charmander sprite/i });
-  expect(charmander).toBeInTheDocument();
+//   const charmander = screen.getByRole('img', { name: /Charmander sprite/i });
+//   expect(charmander).toBeInTheDocument();
 
-  const buttonNext = screen.getByRole('button', { name: /Próximo Pokémon/i });
-  expect(buttonNext).toBeInTheDocument();
-  userEvent.click(buttonNext);
+//   const buttonNext = screen.getByRole('button', { name: /Próximo Pokémon/i });
+//   expect(buttonNext).toBeInTheDocument();
+//   userEvent.click(buttonNext);
 
-  const rapidash = screen.getByRole('img');
-  expect(rapidash).toHaveAttribute('src', 'https://cdn2.bulbagarden.net/upload/5/58/Spr_5b_078.png');
-});
+//   const rapidash = screen.getByRole('img');
+//   expect(rapidash).toHaveAttribute('src', 'https://cdn2.bulbagarden.net/upload/5/58/Spr_5b_078.png');
+// });
 
 test('O texto do botão deve corresponder ao nome do tipo.', () => {
   renderWithRouter(<App />);
